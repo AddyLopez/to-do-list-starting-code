@@ -21,3 +21,14 @@ export const getTodos = async () => {
     return { error };
   }
 };
+
+export const removeTodo = async (id) => {
+  try {
+    await fetch(`/api/todo/${id}`, {
+      method: "DELETE",
+    });
+    return "deleted";
+  } catch (error) {
+    return { error };
+  }
+};

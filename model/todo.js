@@ -13,3 +13,9 @@ const get = () => {
 const remove = (id) => {
   pool.query("DELETE FROM todo WHERE todo_id = $1", [id]);
 };
+
+module.exports = {
+  create,
+  get,
+  remove,
+};

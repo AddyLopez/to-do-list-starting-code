@@ -11,3 +11,13 @@ export const createTodo = async (todo) => {
     return { error };
   }
 };
+
+export const getTodos = async () => {
+  try {
+    const res = await fetch("api/todos");
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    return { error };
+  }
+};

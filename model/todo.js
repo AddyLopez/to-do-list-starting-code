@@ -5,3 +5,7 @@ const create = (description) => {
     description,
   ]);
 };
+
+const get = () => {
+  pool.query("SELECT * FROM todo");
+};

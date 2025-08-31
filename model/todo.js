@@ -9,3 +9,7 @@ const create = (description) => {
 const get = () => {
   pool.query("SELECT * FROM todo");
 };
+
+const remove = (id) => {
+  pool.query("DELETE FROM todo WHERE todo_id = $1", [id]);
+};

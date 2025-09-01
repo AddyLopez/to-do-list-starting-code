@@ -17,9 +17,27 @@ const App = () => {
     }
     setTodoList(response.data);
   };
+
   // Create a handleDelete() function to remove to-do list with matching id
 
   // Create a handleSubmit() function to add new to-do list
+  const handleSubmit = async (event) => {
+    event.preventDefault;
+    setError();
+    const data = new FormData(e.currentTarget);
+    try {
+      data.set("description", todo.description);
+      data.set("created_at", `${newDate().toISOString()}`);
+      const newTodo = await createTodo(data);
+      if (newTodo.error) {
+        setError(newTodo.error);
+      }
+      setTodo({ description: "" });
+      fetchTodos();
+    } catch (err) {
+      setError(err);
+    }
+  };
 
   useEffect(() => {
     // Initialize todoList

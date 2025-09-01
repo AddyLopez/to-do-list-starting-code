@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import { getTodos, createTodo, removeTodo } from "./util";
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import { getTodos, createTodo, removeTodo } from './util';
 
 const App = () => {
   const [todo, setTodo] = useState({
-    description: "",
+    description: '',
   });
   const [todoList, setTodoList] = useState();
   const [error, setError] = useState();
 
-  // Create a fetchTodos() function to update the View from Model using getTodos() function from Controller
+  // function to update the View from Model using getTodos() function from Controller
   const fetchTodos = async () => {
     const response = await getTodos();
     if (response.error) {
@@ -24,22 +24,24 @@ const App = () => {
     try {
       await removeTodo(id);
       fetchTodos();
-    } catch (err) {}
+    } catch (err) {
+      setError(err);
+    }
   };
 
   // Create a handleSubmit() function to add new to-do list
   const handleSubmit = async (event) => {
-    event.preventDefault;
+    event.preventDefault();
     setError();
-    const data = new FormData(e.currentTarget);
+    const data = new FormData(event.currentTarget);
     try {
-      data.set("description", todo.description);
-      data.set("created_at", `${newDate().toISOString()}`);
+      data.set('description', todo.description);
+      data.set('created_at', `${new Date().toISOString()}`);
       const newTodo = await createTodo(data);
       if (newTodo.error) {
         setError(newTodo.error);
       }
-      setTodo({ description: "" });
+      setTodo({ description: '' });
       fetchTodos();
     } catch (err) {
       setError(err);
@@ -56,14 +58,13 @@ const App = () => {
         <input
           type="text"
           value={todo.description}
-          onChange={(event) =>
-            setTodo({ ...todo, description: event.target.value })
-          }
+          onChange={(event) => {
+            setTodo({ ...todo, description: event.target.value });
+          }}
         ></input>
         <button type="submit">Add Todo</button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <ol>
         {todoList?.map((todoItem) => (
           <li

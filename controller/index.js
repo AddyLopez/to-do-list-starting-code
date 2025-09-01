@@ -1,5 +1,5 @@
-const formidable = require("formidable");
-const { create, get, remove } = require("../model/todo");
+const formidable = require('formidable');
+const { create, get, remove } = require('../model/todo');
 
 exports.create = (req, res) => {
   const form = new formidable.IncomingForm();
@@ -10,7 +10,7 @@ exports.create = (req, res) => {
     // If description doesn't exist, send error
     if (!fields.description) {
       return res.status(400).json({
-        error: "Description is required.",
+        error: 'Description is required.',
       });
     }
     // If description exists, add to database using create() function

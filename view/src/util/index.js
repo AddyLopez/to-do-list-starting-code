@@ -1,9 +1,10 @@
+const API_ENDPOINT = 'http://localhost:3000';
 // Create three exported function that will perform the API calls to the Controller
 
 export const createTodo = async (todo) => {
   try {
-    const res = await fetch("api/todo/create", {
-      method: "POST",
+    const res = await fetch(`${API_ENDPOINT}/todo/create`, {
+      method: 'POST',
       body: todo,
     });
     return res.json();
@@ -14,8 +15,8 @@ export const createTodo = async (todo) => {
 
 export const getTodos = async () => {
   try {
-    const res = await fetch("api/todos", {
-      method: "GET",
+    const res = await fetch(`${API_ENDPOINT}/todos`, {
+      method: 'GET',
     });
     const data = await res.json();
     return data;
@@ -26,10 +27,10 @@ export const getTodos = async () => {
 
 export const removeTodo = async (id) => {
   try {
-    await fetch(`/api/todo/${id}`, {
-      method: "DELETE",
+    await fetch(`/${API_ENDPOINT}/todo/${id}`, {
+      method: 'DELETE',
     });
-    return "deleted";
+    return 'deleted';
   } catch (error) {
     return { error };
   }

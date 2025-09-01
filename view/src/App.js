@@ -20,7 +20,6 @@ const App = () => {
 
   // Create a handleDelete() function to remove to-do list with matching id
   const handleDelete = async (id) => {
-    setError();
     try {
       await removeTodo(id);
       fetchTodos();
@@ -50,11 +49,12 @@ const App = () => {
 
   useEffect(() => {
     // Initialize todoList
+    fetchTodos();
   }, []);
   return (
     <div className="App">
       <h1>To-Do List</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={(event) => handleSubmit(event)}>
         <input
           type="text"
           value={todo.description}
@@ -65,6 +65,7 @@ const App = () => {
         <button type="submit">Add Todo</button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
+
       <ol>
         {todoList?.map((todoItem) => (
           <li

@@ -19,6 +19,13 @@ const App = () => {
   };
 
   // Create a handleDelete() function to remove to-do list with matching id
+  const handleDelete = async (id) => {
+    setError();
+    try {
+      await removeTodo(id);
+      fetchTodos();
+    } catch (err) {}
+  };
 
   // Create a handleSubmit() function to add new to-do list
   const handleSubmit = async (event) => {

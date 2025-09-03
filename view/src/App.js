@@ -11,11 +11,11 @@ const App = () => {
 
   // function to update the View from Model using getTodos() function from Controller
   const fetchTodos = async () => {
-    const response = await getTodos();
-    if (response.error) {
-      setError(response.error.name);
+    const res = await getTodos();
+    if (res.error) {
+      setError(res.error.name);
     }
-    setTodoList(response.data);
+    setTodoList(res.data);
   };
 
   // Create a handleDelete() function to remove to-do list with matching id

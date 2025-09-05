@@ -67,16 +67,17 @@ const App = () => {
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       <ol>
-        {todoList?.map((todoItem) => (
-          <li
-            key={todoItem.todo_id}
-            onClick={() => {
-              handleDelete(todoItem.todo_id);
-            }}
-          >
-            {todoItem.description}
-          </li>
-        ))}
+        {todoList &&
+          todoList.map((todoItem) => (
+            <li
+              key={todoItem.todo_id}
+              onClick={() => {
+                handleDelete(todoItem.todo_id);
+              }}
+            >
+              {todoItem.description}
+            </li>
+          ))}
       </ol>
     </div>
   );

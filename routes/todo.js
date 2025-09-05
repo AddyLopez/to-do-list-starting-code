@@ -1,7 +1,7 @@
 const express = require('express');
-const { create, read, removeTodo } = require('../controller/index');
-
 const router = express.Router();
+
+const { create, read, removeTodo } = require('../controller');
 
 router.post('/todo/create', create);
 router.get('/todos', read);

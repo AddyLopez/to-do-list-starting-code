@@ -6,7 +6,7 @@ exports.create = (req, res) => {
   form.keepExtensions = true;
   form.parse(req, async (err, fields) => {
     const { description } = fields;
-    // Check to see if the description field exists in the form
+    // Check if the description field exists in the form
     // If description doesn't exist, send error
     if (!fields.description) {
       return res.status(400).json({
@@ -20,7 +20,7 @@ exports.create = (req, res) => {
     } catch (error) {
       // If description can't be added to database, send error
       return res.status(400).json({
-        error,
+        error: error,
       });
     }
   });

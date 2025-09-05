@@ -58,17 +58,17 @@ const App = () => {
         <input
           type="text"
           value={todo.description}
-          onChange={(event) => {
-            setTodo({ ...todo, description: event.target.value });
-          }}
-        ></input>
+          onChange={(event) => 
+            setTodo({ ...todo, description: event.target.value })
+          }
+        />
         <button type="submit">Add Todo</button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       <ol>
-        {todoList &&
-          todoList.map((todoItem) => (
+        {todoList
+          && todoList.map((todoItem) => (
             <li
               key={todoItem.todo_id}
               onClick={() => {
@@ -77,7 +77,8 @@ const App = () => {
             >
               {todoItem.description}
             </li>
-          ))}
+          ))
+        }
       </ol>
     </div>
   );
